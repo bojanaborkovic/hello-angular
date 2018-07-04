@@ -8,13 +8,30 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  tweet = {
-    body : "this is a tweet",
-    likesCount: 10,
-    isLiked: true
-  }
+  // viewMode = 'somethingElse';
+  // courses;
 
-  // onFavoriteChanged(eventArgs: FavoriteChangedEventArgs){
-  //   console.log("Favorite changed: ", eventArgs.newValue);
+  canSave = false;
+
+  // onAdd(){
+  //   this.courses.push({ id: 4, name: "course4"});
+  // }
+
+  // onChange(course)
+  // {
+  //   course.name = 'Updated';
+  // }
+
+  // loadCourses(){
+  //   this.courses =  [
+  //     { id: 1, name: 'course1'},
+  //     { id: 2, name: 'course2'},
+  //     { id: 3, name: 'course3'},
+  
+  //   ];
+  // }
+
+  // trackCourse(index, course){
+  //   return course ? course.id : undefined;
   // }
 }

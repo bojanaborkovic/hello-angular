@@ -1,0 +1,86 @@
+<!-- <h1> Hello world </h1> -->
+<!-- <courses></courses> -->
+<!-- <authors></authors> -->
+<!-- <favorite [is-favorite]="post.isFavorite" (change)="onFavoriteChanged($event)"></favorite> -->
+<!-- <input type="text" [(ngModel)]="title">
+<br/>
+{{ title | titleCase}} -->
+
+<!-- <bootstrap-panel>
+    <ng-container class="heading">Heading</ng-container>
+    <div class="body">
+        <h2>Body</h2>
+        <p>Some content here...</p>
+    </div>
+</bootstrap-panel> -->
+
+<!-- <like 
+    [likesCount]="tweet.likesCount"
+    [isActive]="tweet.isLiked"
+></like> -->
+
+<!-- directives can be STRUCTURAL - modify the structure of DOM-->
+<!-- directives can be ATTRIBUTE - modify the attributes of DOM elements-->
+
+
+<!-- <div *ngIf="courses.length > 0;then coursesList else noCourses"></div>
+
+<ng-template #coursesList>
+    List of courses
+</ng-template>
+
+<ng-template #noCourses>
+    No courses yet
+</ng-template> -->
+
+<!-- <div [hidden]="courses.length == 0">
+    List of courses
+</div>
+
+<div [hidden]="courses.length > 0">
+    No courses yet
+</div> -->
+
+
+
+<!-- ngSwitch-->
+<!-- <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a [class.active]="viewMode == 'map'" class="nav-link" data-toggle="pill" href="#map-view" (click)="viewMode = 'map'">Map View</a>
+        </li>
+        <li class="nav-item">
+          <a [class.active]="viewMode == 'list'" class="nav-link" data-toggle="pill" href="#list-view" (click)="viewMode = 'list'">List View</a>
+        </li>
+</ul>
+
+<div [ngSwitch]="viewMode">
+        <div *ngSwitchCase="'map'">Map View Content</div>
+        <div *ngSwitchCase="'list'">List View Content</div>
+        <div *ngSwitchDefault>Otherwise</div>
+</div> -->
+<!-- <button (click)="onAdd()">Add</button>
+<ul>
+    <li *ngFor="let course of courses; even as isEven"> 
+        {{course.name}} 
+        <button (click)="onChange(course)">Remove</button>
+    </li>
+</ul> -->
+
+<!-- <button (click)="loadCourses()">Load courses</button>
+<ul>
+    <li *ngFor="let course of courses; trackBy: trackCourse"> 
+                {{course.name}} 
+        </li>
+</ul> -->
+
+
+<!-- <favorite></favorite> -->
+
+<!-- <button
+    [ngStyle]="{
+        'backgroundColor': canSave ? 'blue' : 'gray',
+        'color': canSave ? 'white' : 'black'
+    }"
+    >
+Save
+</button> -->
