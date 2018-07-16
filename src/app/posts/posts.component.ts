@@ -18,43 +18,36 @@ export class PostsComponent implements OnInit {
 
   }
 
-  ngOnInit(){
-    this.service.getPosts()
-    .subscribe(response => {
-      this.posts = response.json();
-    }, error => {
-      alert('An uxpected error occurred');
-      console.log(error);
-    });
+  ngOnInit() {
+    this.service.getAll()
+      .subscribe(response => this.posts = response.json());
   }
 
-  createPost(input: HTMLInputElement) {
+  create(input: HTMLInputElement) {
     let post = { title: input.value};
     input.value = "";
 
-   this.service.createPost(post)
+   this.service.create(post)
       .subscribe(
-        response => {
-          post["id"] = response.json().id;
+        newPost => {
+          post["id"] = newPost.id;
           this.posts.splice(0, 0, post);
-          console.log(response.json());
         }, (error: AppError) => {
             if(error instanceof BadInput){
              // this.form.setErrors(error.originalError);
             }
             else{
-              alert('An uxpected error occurred');
-              console.log(error);
+              throw error;
             }
           
       });
   }
 
   updatePost(post) {
-    this.service.updatePost(post)
+    this.service.update(post)
       .subscribe(
-        response => {
-          console.log(response.json());
+        updatedPost => {
+          console.log(updatedPost.json());
       }, error => {
           alert('An uxpected error occurred');
           console.log(error);
@@ -62,9 +55,9 @@ export class PostsComponent implements OnInit {
   }
 
   deletePost(post) {
-      this.service.deletePost(345)
+      this.service.delete(345)
       .subscribe(
-        response => {
+        () => {
           let index = this.posts.indexOf(post);
           this.posts.splice(index, 1);
       }, (error: AppError) => {
@@ -72,8 +65,7 @@ export class PostsComponent implements OnInit {
             alert('This post has already beend deleted');
           }
           else {
-            alert('An unexpected error occurred.');
-            console.log(error);
+            throw error;
           }
          
       });
