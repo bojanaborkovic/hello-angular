@@ -24,23 +24,24 @@ export class PostsComponent implements OnInit {
   }
 
   create(input: HTMLInputElement) {
-    let post = { title: input.value};
-    input.value = "";
+    let post = { title: input.value };
+    this.posts.splice(0, 0, post);
 
-   this.service.create(post)
+    input.value = '';
+
+    this.service.create(post)
       .subscribe(
         newPost => {
-          post["id"] = newPost.id;
-          this.posts.splice(0, 0, post);
-        }, (error: AppError) => {
-            if(error instanceof BadInput){
-             // this.form.setErrors(error.originalError);
-            }
-            else{
-              throw error;
-            }
-          
-      });
+          post['id'] = newPost.json().id;
+        },
+        (error: AppError) => {
+          this.posts.splice(0, 1);
+
+          if (error instanceof BadInput) {
+            // this.form.setErrors(error.originalError);
+          }
+          else throw error;
+        });
   }
 
   updatePost(post) {

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CoursesComponent } from 'src/app/courses.component';
@@ -25,6 +25,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule } from '@angular/router';
+import { GithubFollowersService } from './services/github-followers.service';
+import { AppErrorHandler } from './common/app-error-handler';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,7 @@ import { RouterModule } from '@angular/router';
         component: HomeComponent
       },
       { 
-        path: 'profile/:username', 
+        path: 'followers/:id', 
         component: GithubProfileComponent
       },
       { 
@@ -80,7 +82,9 @@ import { RouterModule } from '@angular/router';
   providers: [
     CoursesService, 
     AuthorService,
-    PostService
+    PostService,
+    GithubFollowersService,
+    { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
 })
